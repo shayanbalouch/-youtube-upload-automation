@@ -1,0 +1,99 @@
+import pyautogui
+import subprocess
+import time
+
+TEXT = """Experience Mafia III on PlayStation 4 with this full gameplay walkthrough. Dive into a gritty revenge story set in a crime-filled open world, featuring intense gunfights, stealth tactics, and empire-building mechanics.
+
+Game: Mafia III
+Platform: PS4
+Mode: Gameplay / Walkthrough
+
+In this video:
+
+* Full mission gameplay
+* Open-world exploration of New Bordeaux
+* Intense combat and stealth mechanics
+* Story progression and character-driven narrative
+
+If you enjoy gameplay content like this, make sure to like, subscribe, and stay tuned for the next parts.
+
+#Mafia3 #MafiaIII #PS4Gaming #GameplayWalkthrough #OpenWorldGaming #StoryDrivenGames #Gaming2026 #ActionGames #ConsoleGaming #FullGameplay"""
+
+def mac_copy(text):
+    subprocess.run('pbcopy', input=text.encode('utf-8'), check=True)
+
+def applescript_paste():
+    subprocess.run([
+        'osascript', '-e',
+        'tell application "System Events" to keystroke "v" using command down'
+    ])
+
+time.sleep(5)
+print("Started...")
+
+for i in range(47):
+    print(f"\nIteration {i+1}")
+
+    # Copy text
+    print("Copying text...")
+    mac_copy(TEXT)
+    time.sleep(0.5)
+  
+    # Click Description field
+    print("Clicking Description...")
+    pyautogui.moveTo(307, 507, duration=0.5)
+    pyautogui.click()
+    time.sleep(0.3)
+    pyautogui.click()
+    time.sleep(1.5)
+
+    # Paste via AppleScript
+    print("Pasting...")
+    applescript_paste()
+    time.sleep(1.5)
+
+    # Click Save
+    print("Clicking Save...")
+    pyautogui.moveTo(1280, 272, duration=0.5)
+    pyautogui.click()
+    time.sleep(1)
+
+    # Click The Edit Button
+    pyautogui.moveTo(1865, 210, duration=0.3)
+    pyautogui.click()
+    time.sleep(1)
+
+    # Bring the cursor to Save Button
+
+
+    pyautogui.moveTo(1375, 940, duration=0.3)
+
+    # Click Next Button x3
+
+    pyautogui.click()
+    time.sleep(1)
+    pyautogui.click()
+    time.sleep(0.3)
+    pyautogui.click()
+    time.sleep(0.3)
+
+    # Click Public Button
+    
+    pyautogui.moveTo(590, 587, duration=0.3)
+    time.sleep(0.3)
+    pyautogui.click()
+    time.sleep(2)
+
+    # Click Publish Button
+    
+    pyautogui.moveTo(1375, 940, duration=0.3)
+    time.sleep(1)
+    pyautogui.click()
+    time.sleep(2)
+
+    # Switch tab
+    print("Switching tab...")
+    pyautogui.hotkey('command', 'option', 'right')
+    time.sleep(2)
+
+print("Done!")
